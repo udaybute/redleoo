@@ -1,4 +1,7 @@
-import React from 'react'
+
+
+// ✅ Updated Products.jsx to ensure responsive grid and better image scaling
+import React from 'react';
 import k1 from "../images/k1.jpg";
 import k2 from "../images/k2.jpg";
 import k3 from "../images/k3.jpg";
@@ -41,25 +44,34 @@ const products = [
   }
 ];
 
-
-
 const Products = () => {
- return (
-    <section id="products" className="section">
-      <h2>Our Products</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 20 }}>
-        {products.map(product => (
-          <div key={product.id} style={{ background: '#fff', padding: 20, borderRadius: 16, boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
-           <img src={product.image} alt={product.name} style={{ width: '100%', height: 150, objectFit: 'cover', borderRadius: '10px' }} />
-            <h3>{product.name}</h3>
-            <p>{product.price}</p>
-            <p>{product.desc}</p>
-            <a href="#purchase" className="btn-red">Buy Now</a>
-          </div>
-        ))}
+  return (
+    <section id="products" className="py-5">
+      <div className="container">
+        <h2 className="text-center mb-4">Our Products</h2>
+        <div className="row g-4">
+          {products.map((product) => (
+            <div key={product.id} className="col-12 col-sm-6 col-lg-4">
+              <div className="card h-100 shadow-sm">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="card-img-top"
+                  style={{ objectFit: 'cover', height: '200px' }}
+                />
+                <div className="card-body d-flex flex-column">
+                  <h5 className="card-title">{product.name}</h5>
+                  <p className="card-subtitle text-muted mb-2">{product.price}</p>
+                  <p className="card-text small">{product.desc}</p>
+                  <a href="#purchase" className="btn btn-danger mt-auto">Buy Now</a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
-}
+};
 
-export default Products
+export default Products;
